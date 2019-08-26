@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 dotenv.config();
 
-app.use("/api", routes);
+app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 mongoose.connection.once("open", () => console.log("Database is ready"));
