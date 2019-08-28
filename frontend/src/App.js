@@ -1,18 +1,20 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import "./App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import HomePage from "./components/HomePage";
 
+import GlobalStyles from "./styles/global";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Food App</h1>
-
+    <>
       <Switch>
         <Route exact path="/" component={HomePage} />
       </Switch>
-    </div>
+
+      <GlobalStyles />
+    </>
   );
 }
 

@@ -1,16 +1,39 @@
-import React from "react";
-// import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
-// import { Container } from './styles';
+import RegisterForm from "../Forms/RegisterForm";
+import LoginForm from "../Forms/LoginForm";
+
+import { Container, Switch } from "./styles";
 
 export default function HomePage() {
-  function _handleGithubSignin() {
-    window.open("http://localhost:3333/auth/github", "_self");
-  }
+  const [activeForm, setActiveForm] = useState("login");
 
   return (
-    <div>
-      <button onClick={() => _handleGithubSignin()}>Sign in with GitHub</button>
-    </div>
+    <Container>
+      <Switch>
+        <div className="buttons">
+          <button
+            className={activeForm === "login" && "active"}
+            onClick={() => setActiveForm("login")}
+            type="button"
+            id="login"
+          >
+            Login
+          </button>
+          <button
+            className={activeForm === "register" && "active"}
+            onClick={() => setActiveForm("register")}
+            type="button"
+            id="register"
+          >
+            Register
+          </button>
+        </div>
+
+        <div className="forms">
+          {activeForm === "login" ? <LoginForm /> : <RegisterForm />}
+        </div>
+      </Switch>
+    </Container>
   );
 }
